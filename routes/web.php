@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,37 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     $session = SessionModel::all();
-
-//     dd(
-//         $session
-//     );
-//     // return view('welcome');
-// });
-
-//Route::get('/', [App\Http\Controllers\UserAuth::class, 'index']);
-
-// Route::post("user", [UserAuth::class, "userLogin"]);
-
-// Route::get('/login', function () {
-//     if(session()->has("user"))
-//     {
-//         return redirect("profile");
-//     }
-//     return view("login");
-// });
-
-// Route::view("profile", "profile");
-
-// Route::get('/logout', function () {
-//     if(session()->has("user"))
-//     {
-//         session()->pull("user");
-//     }
-//     return redirect("login");
-// });
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::redirect('/', '/home');
+
+Route::post('/delete-session/', [HomeController::class, 'deleteSession']);
+
+Route::get('delete-all-sessions', [HomeController::class, 'deleteAllSessions']);

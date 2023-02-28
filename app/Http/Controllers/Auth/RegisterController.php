@@ -70,11 +70,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        session()->push('user', [
-            'name' => $data['name'],
-            'email' => $data['email'],
-        ]);
-
         return $user;
     }
 }

@@ -14,7 +14,7 @@ class DatabaseSessionHandler extends \Illuminate\Session\DatabaseSessionHandler
 
         $agent = new Agent();
         $browser = $agent->browser();
-        $browserVersion = $agent->version('browser');
+        $browserVersion = $agent->version($browser);
         $device = $agent->device();
         $platform = $agent->platform();
         $deviceType = $agent->deviceType();
@@ -28,7 +28,7 @@ class DatabaseSessionHandler extends \Illuminate\Session\DatabaseSessionHandler
             $this->getQuery()->insert([
                 'id' => $sessionId, 'payload' => base64_encode($data), 'last_activity' => time(), 'user_id' => $user_id,
                 'browser' => $browser, 'browserVersion' => $browserVersion, 'device' => $device, 'platform' => $platform,
-                'deviceType' => $deviceType,
+                'deviceType' => $deviceType, 'ip_address' => $this->ipAddress(), 'user_agent' => $this->userAgent(),
             ]);
         }
 

@@ -10,4 +10,6 @@ class SessionModel extends Model
     use HasFactory;
 
     protected $table = 'sessions';
+
+    public $incrementing = false;
 }

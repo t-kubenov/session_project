@@ -18,10 +18,11 @@ class CreateSessionsTable extends Migration
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
 
-            $table->text('OS')->nullable()->default();
-            $table->text('Browser')->nullable();
-//            'browser' => $browser, 'browserVersion' => $browserVersion, 'device' => $device, 'platform' => $platform,
-//                'deviceType' => $deviceType,
+            $table->text('browser')->nullable();
+            $table->text('browserVersion')->nullable();
+            $table->text('device')->nullable();
+            $table->text('platform')->nullable();
+            $table->text('deviceType')->nullable();
 
             $table->text('user_agent')->nullable();
             $table->text('payload');
